@@ -1,0 +1,91 @@
+{% extends './layout/simple.html' %}
+{% block body %}
+
+{% include './Admin/navbara.html' %}
+    <button class="btn btn-warning"><a href="{{ url_for('addser',uid = uid) }}"> Add new services </a></button>
+    <h3>Sevice table</h3>
+    <table class="table table-dark table-striped">
+        <tr>
+            <th>ID</th>
+            <th>Service Name</th>
+            <th>Base price</th>
+            <th>Action</th>
+        </tr>
+        
+        {% for pro in data %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ pro.name }}</td>
+                <td>{{ pro.price }}</td>
+                <td>
+                    <a href = '{{url_for("seredit",uid = uid,servid = pro.id)}}'><button type="button" class="btn btn-primary">Edit</button></a>
+                    <a href = '{{url_for("serdel",uid = uid,servid = pro.id)}}'><button type="button" class="btn btn-secondary">Delete</button></a>
+                </td>
+            </tr>
+        {% endfor %}
+        
+    
+    </table>
+
+
+    <h3>professtional data</h3>
+    <table class="table table-dark table-striped">
+        <tr>
+            <th>ID</th>
+            <th>name</th>
+            <th>Expeience(in years)</th>
+            <th>Service Name</th>
+            <th>Action</th>
+        </tr>
+        
+        {% for pr in proinfo %}
+        {% if user[pr.username].prof==0 and user[pr.username].block == 0 %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ pr.fullname }}</td>
+                <td>{{ pr.Experience }}</td>
+                <td>{{ pr.sev_name }}</td>
+                
+                <td>
+                    <a href="{{url_for('paccept',uid = uid,proid = pr.id)}}"><button class="btn btn-primary">approve</button></a>
+                    
+                    <a href="{{url_for('pdelete',uid = uid,proid = pr.id)}}"><button class="btn btn-danger">Delete/reject</button></a>
+                </td>
+            </tr>
+        {% endif %}
+        {% endfor %}
+
+    </table>
+
+    <h3>Service request</h3>
+    <table class="table table-dark table-striped">
+        
+
+    
+        <tr>
+            <th>ID</th>
+            <th>Assigned professtional(if any)</th>
+            <th>Requested Date</th>
+            <th>Satus</th>
+        </tr>
+        {% for i in info %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            {% if i.status != 'rejected' %}
+                <td>{{ proi[i.proffesional_id] }}</td>
+            {% else %}
+                <td></td>
+            {% endif %}
+            <td>{{ i.dateofrequest }}</td>
+            <td>{{ i.status }}</td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+    <a href="{{url_for('block',uid = uid)}}"><button class="btn btn-danger">Block Customer or Proffesional</button></a>
+
+
+{% endblock %}

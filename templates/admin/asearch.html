@@ -1,0 +1,25 @@
+
+{% extends './layout/simple.html' %}
+{% block body %}
+{% include './Admin/navbara.html' %}
+
+<br>
+<br>
+<form action = '{{url_for("aresult",uid = uid)}}' method = 'post' >
+    <select class="form-select" name = 'select2' aria-label="Default select example" aria-placeholder="please select">
+        
+        <option value="Service">Service Name</option>
+        <option value="Proffesional"> Professional Name</option>
+        <option value="Customer">Customer Name</option>
+        <option value="Status">Status</option>
+        
+      </select>
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">search</label>
+        <input type="text" name = 'search2' class="form-control" id="exampleFormControlInput1">
+      </div>
+      <button type="submit"> Serach </button>
+
+</form>
+
+{% endblock %}

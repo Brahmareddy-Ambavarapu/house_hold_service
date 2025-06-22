@@ -1,0 +1,17 @@
+{% extends './layout/simple.html' %}
+{% block body %}
+<form action = '{{ url_for("sedit",uid = uid,servid = servid )}}' method = 'post'>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Base price</label>
+        <input type="number" name = 'bp' id="exampleFormControlInput1" value = '{{serv.price}}'>
+      </div>
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Time required</label>
+        <input type="number" name = "tr" id="exampleFormControlInput1" value = "{{serv.timerequired}}">
+      </div>
+      <button type="submit">Edit</button>
+            
+</form>
+
+
+{% endblock %}

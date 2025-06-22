@@ -1,0 +1,47 @@
+{% extends './layout/simple.html' %}
+{% block body %}
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Proffesional name(if any)</th>
+            <th>Reqested Date</th>
+            <th>Status</th>
+
+        </tr>
+
+    </thead>
+    
+    <tbody>
+
+    
+        {% for det in data %}
+        
+            {% if profesional[det.proffesional_id]==aser or det.status == aser or customer[det.customer_id] ==aser or service[det.service_id]==aser  %}
+              <tr>
+                  <td>{{ loop.index }}</td>
+                  {% if det.status != 'requested' %}
+                    <td>{{ profesional[det.proffesional_id] }}</td>
+                  {% else %}
+                    <td></td>
+                  {% endif %}
+                  <td>{{ det.dateofrequest }}</td>
+                  <td>{{ det.status }}</td>                  
+              </tr>
+            
+            {% endif %}
+        {% endfor %}
+
+
+
+    </tbody>
+
+</table>
+
+<a href="{{url_for('ahome',uid = uid)}}"><button>Home</button></a>
+<br>
+<a href="{{url_for('asearch',uid = uid)}}"><button>search</button></a>
+
+{% endblock %}
+

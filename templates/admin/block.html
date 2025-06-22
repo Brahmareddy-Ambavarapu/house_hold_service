@@ -1,0 +1,57 @@
+{% extends './layout/simple.html' %}
+{% block body %}
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">S.NO</th>
+        <th scope="col">customer name</th>
+        <th scope="col">block</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      {% for i in cus %}
+      
+      <tr>
+        <td>{{loop.index}}</td>
+        <td>{{i.username}}</td>
+        {% if not(use[i.username].block) %}
+        <td><a href = "{{url_for('blockid',uid = uid,svid = use[i.username].id)}}"><button class="btn btn-danger">Block Customer</button></a></td>
+        {% else %}
+        <td><a href = "{{url_for('unblock',uid = uid,svid = use[i.username].id)}}"><button class="btn btn-danger">unblock Customer</button></a></td>
+        {% endif %}
+      </tr>
+      
+      {% endfor %}
+    </tbody>
+</table>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">S.NO</th>
+      <th scope="col">Proffesional name</th>
+      <th scope="col">block/Unblock</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    {% for i in pro %}
+    {% if use[i.username].ap %}
+    <tr>
+      <td>{{loop.index}}</td>
+      <td>{{i.username}}</td>
+      {% if not(use[i.username].block) %}
+      <td><a href = "{{url_for('blockid',uid = uid,svid = use[i.username].id)}}"><button class="btn btn-danger">Block Proffesional</button></a></td>
+       {% else %} 
+      <td><a href = "{{url_for('unblock',uid = uid,svid = use[i.username].id)}}"><button class="btn btn-danger">Unblock Proffesional</button></a></td>
+      
+      {% endif %}
+    </tr>
+    {% endif %}
+    {% endfor %}
+  </tbody>
+</table>
+
+
+{% endblock %}

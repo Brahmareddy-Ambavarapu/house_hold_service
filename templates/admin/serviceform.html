@@ -1,0 +1,29 @@
+{% extends './layout/simple.html' %}
+{% block body %}
+
+<h1>Enter service details</h1>
+<form action = "{{ url_for('addreq',uid = uid)}}" method = 'post'>
+    <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">service name</label>
+    <input type="text" name = "sname" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+
+    </div>
+    <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">base price</label>
+    <input type="number" name = "baseprice" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+
+    </div>
+    <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">description</label>
+    <input type="text" name = "description" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+
+    </div>
+    <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">time required(days)</label>
+    <input type="number" name = "timereq" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+
+    </div>
+
+    <button type="submit" class="btn btn-primary">Register</button>
+</form>
+{% endblock %}
