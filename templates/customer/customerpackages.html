@@ -1,0 +1,39 @@
+{% extends './layout/simple.html' %}
+{% block body %}
+{% include './Customer/navbarc.html' %}
+
+
+<h2>Best {{ service }} packages</h2>
+
+
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">S.NO</th>
+        <th scope="col">service detail</th>
+        <th scope="col">rating</th>
+        <th scope="col">baseprice</th>
+        <th scope="col">Experience</th>
+        <th scope="col">Booking</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+        {% for det in data %}
+            {% if det.sev_name == service and user[det.username].prof == 1 and user[det.username].block == 0 %}
+              <tr>
+                  <td>{{ loop.index }}</td>
+                  <td>{{ det.specality }}</td>
+                  <td>{{ det.rating }}</td>
+                  <td>{{ price }}</td>
+                  <td>{{ det.Experience }}</td>
+                  <td><a href='{{url_for("addserreq",uid = uid,serid = serid,proid = det.id)}}'><button>Book</button></a></td>
+              </tr> 
+            {% endif %}
+            
+        {% endfor %}
+      
+    </tbody>
+  </table>
+
+{% endblock %}

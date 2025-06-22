@@ -1,0 +1,60 @@
+
+{% extends './layout/simple.html' %}
+{% block body %}
+
+<h2>Best {{ service }} packages</h2>
+
+
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">S.NO</th>
+        <th scope="col">service detail</th>
+        <th scope="col">rating</th>
+        <th scope="col">baseprice</th>
+        <th scope="col">Experience</th>
+        <th scope="col">Booking</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% if service %}
+        {% for det in prof %}
+            {% if det.sev_name == serc %}
+              <tr>
+                  <td>{{ loop.index }}</td>
+                  <td>{{ det.specality }}</td>
+                  <td>{{ det.rating }}</td>
+                  <td>{{ price }}</td>
+                  <td>{{ det.Experience }}</td>
+                  <td><a href='{{url_for("addserreq",uid = uid,serid = sname[det.sev_name].service_id,proid = det.id)}}'><button>Book</button></a></td>
+              </tr>
+            
+            {% endif %}
+        {% endfor %}
+        {% elif pincode %}
+        {% for det in prof %}
+            {% if det.pincode == serc %}
+              <tr>
+                  <td>{{ loop.index }}</td>
+                  <td>{{ det.specality }}</td>
+                  <td>{{ det.rating }}</td>
+                  <td>{{ sname[det.sev_name].price }}</td>
+                  <td>{{ det.Experience }}</td>
+                  
+                  <td><a href='{{url_for("addserreq",uid = uid,serid = sname[det.sev_name].service_id,proid = det.id)}}'><button>Book</button></a></td>
+              </tr>
+            
+            {% endif %}
+        {% endfor %}
+
+        {% endif %}
+            
+        
+      
+    </tbody>
+  </table>
+  <a href="{{url_for('customerhome' ,uid = uid)}}"><button>Home</button></a>
+  <br>
+  <a href="{{url_for('csearch' ,uid = uid)}}"><button>search</button></a>
+
+{% endblock %}

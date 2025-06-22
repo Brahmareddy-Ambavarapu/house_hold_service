@@ -1,0 +1,59 @@
+{% extends './layout/simple.html' %}
+{% block body %}
+
+{% include './Customer/navbarc.html' %}
+
+<div class="container mt-4">
+    <h2>Service Request Statistics</h2>
+    <canvas id="cstatsChart"></canvas>
+</div>
+
+<!-- Include Chart.js library -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Get chart data passed from Flask
+    const chartData = {{ chart_data | tojson }};
+    
+    // Initialize Chart.js
+    const ctx = document.getElementById('cstatsChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: chartData.labels,  // X-axis labels
+            datasets: [{
+                label: 'Service Requests',
+                data: chartData.values,  // Y-axis data
+                backgroundColor: [
+                    'rgba(75, 192, 192, 0.2)',   // Colors for each bar
+                    'rgba(255, 159, 64, 0.2)',
+                    'rgba(153, 102, 255, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(75, 192, 192, 1)',    // Border colors for each bar
+                    'rgba(255, 159, 64, 1)',
+                    'rgba(153, 102, 255, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'top'
+                },
+                tooltip: {
+                    enabled: true
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+
+{% endblock %}

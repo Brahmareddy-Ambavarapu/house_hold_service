@@ -1,0 +1,60 @@
+{% extends './layout/simple.html' %}
+{% block body %}
+
+<h3>Service remarks</h3>
+<h4>Requested id : {{ ser_req.id }}</h4>
+
+<div class="container text-center" style="padding: 2px;">
+    <div class="row">
+      <div class="col">
+        {{data.name}}
+      </div>
+      <div class="col">
+        {{profe.specality}}
+      </div>
+      <div class="col">
+        {{ser_req.dateofrequest}}
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container text-center" style="padding: 2px;">
+    <div class="row">
+      <div class="col">
+        {{ser_req.proffesional_id}}
+      </div>
+      <div class="col">
+        {{profe.username}}
+      </div>
+      <div class="col">
+        {{profe.phone}}
+      </div>
+    </div>
+  </div>
+
+  <form action = '{{url_for("close",uid = uid,serid = ser_req.id)}}' method = 'post' style="padding: 2px;">
+    <select class="form-select" name = 'Rating' aria-label="Default select example" aria-placeholder="please select Rating" required>
+        
+        <option value='1'>1</option>
+        <option value='2'>2</option>
+        <option value='3'>3</option>
+        <option value='4'>4</option>
+        <option value='5'>5</option>
+        
+      </select>
+      <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Remarks</label>
+        <textarea class="form-control" name ="remarks" id="exampleFormControlTextarea1" rows="3"></textarea>
+      </div>
+      <button type = "submit" class="btn btn-primary"> Submit</button>
+
+
+
+  </form>
+  <a href = "{{url_for('customerhome',uid = uid)}}"><button>close</button></a>
+
+
+
+
+{% endblock %}

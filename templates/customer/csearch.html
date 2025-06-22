@@ -1,0 +1,47 @@
+{% extends './layout/simple.html' %}
+{% block body %}
+{% include './Customer/navbarc.html' %}
+<!-- 
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand">Welcome Customer</a>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" href="{{url_for('customerhome' ,uid = uid)}}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{url_for('csearch' ,uid = uid)}}">Search</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{url_for('customerhome' ,uid = uid)}}">Summary</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{url_for('logout')}}">Logout</a>
+        </li>
+        
+      </ul>
+      
+    </div>
+  </div>
+</nav> -->
+
+
+<form action = '{{ url_for("cresult",uid = uid) }}' method = 'post' >
+    <select class="form-select" name = 'select' aria-label="Default select example">
+        <option selected>select one</option>
+        <option value="Service name">Service name</option>
+        
+        <option value="Pincode">Pincode</option>
+        
+      </select>
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">search</label>
+        <input type="text" name = 'search' class="form-control" id="exampleFormControlInput1">
+      </div>
+      <button type="submit"> Serach </button>
+
+</form>
+
+{% endblock %}
