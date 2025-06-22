@@ -1,0 +1,37 @@
+{% extends './layout/simple.html' %}
+{% block body %}
+
+<form action = "/csignup" method="post">
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Email address</label>
+      <input type="text" name = "email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Password</label>
+      <input type="password" name = "password1" class="form-control" id="exampleInputPassword1">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword2" class="form-label"> conform Password</label>
+      <input type="password" name = "password2" class="form-control" id="exampleInputPassword2">
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputfname" class="form-label">Full name </label>
+        <input type="text" name = "fullname" class="form-control" id="exampleInputfname">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputfname2" class="form-label">Phone number </label>
+        <input type="number" name = "phone" class="form-control" id="exampleInputfname2">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputadd" class="form-label"> Address </label>
+        <input type="text-feild" name = "address" class="form-control" id="exampleInputadd">
+      </div>
+      <div class="mb-3"></div>
+        <label for="exampleInputpincode" class="form-label"> Pincode </label>
+        <input type="number" name = "pincode" class="form-control" id="exampleInputpincode">
+      </div>
+    
+    <button type="submit" class="btn btn-primary">Register</button>
+  </form>
+
+{% endblock %}

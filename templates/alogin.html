@@ -1,0 +1,22 @@
+
+{% extends './layout/simple.html' %}
+{% block body %}
+
+        
+    <h1>Login</h1>
+    <form action="/login" method = 'post'>
+      <div class="mb-3" id = "formt">
+          <label for="exampleFormControlInput1" class="form-label">User Name</label>
+          <input type="text"  name = 'uname' class="form-control" id="exampleFormControlInput1" placeholder="Emter Username">
+      </div>
+      <div class="mb-3" id = "formt">
+          <label for="exampleFormControlInput1" class="form-label">Password</label>
+          <input type="password" name = 'password' class="form-control" id="exampleFormControlInput1" placeholder="Enter Password">
+      </div>
+      <button type="submit" class="btn btn-secondary">Login</button>
+    </form>
+    <a class="nav-link" href="{{url_for('csign')}}">Create Account</a>
+    <a class="nav-link" href="{{url_for('psign')}}">Register as proffesional</a>
+            
+    
+{% endblock %}
