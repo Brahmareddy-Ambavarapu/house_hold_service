@@ -1,0 +1,81 @@
+{% extends './layout/simple.html' %}
+{% block body %}
+
+<table class="table table-striped" style="padding: 2px;border: 2px;margin:20px;">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Customer Name</th>
+            <th>Location</th>
+            <th>Pincode</th>
+            <th>Date</th>
+            <th>Rating</th>
+
+        </tr>
+
+    </thead>
+    <tbody>
+
+        {% if loc %}
+        {% for det in data %}
+        
+            {% if det.proffesional_id == proid and det.status == 'closed' and cust[det.customer_id].loc == pser %}
+              <tr>
+                  <td>{{ loop.index }}</td>
+                  <td>{{ cust[det.customer_id].cname }}</td>
+                  <td>{{ cust[det.customer_id].loc }}</td>
+                  <td>{{ cust[det.customer_id].pin }}</td>
+                  <td>{{ det.dateofrequest }}</td>
+                  <td>{{ det.rating }}</td>
+                  
+              </tr>
+            
+            {% endif %}
+        {% endfor %}
+        {% elif pin %}
+        {% for det in data %}
+        
+            {% if cust[det.customer_id].pin == pser and det.proffesional_id == proid and det.status == 'closed' %}
+              <tr>
+                  <td>{{ loop.index }}</td>
+                  <td>{{ cust[det.customer_id].cname }}</td>
+                  <td>{{ cust[det.customer_id].loc }}</td>
+                  <td>{{ cust[det.customer_id].pin }}</td>
+                  <td>{{ det.dateofrequest }}</td>
+                  <td>{{ det.rating }}</td>                 
+                 
+              </tr>
+            
+            {% endif %}
+        {% endfor %}
+
+        {% elif dat %}
+        {% for det in data %}
+        
+            {% if det.dateofrequest == pser and det.proffesional_id == proid and det.status == 'closed' %}
+              <tr>
+                  <td>{{ loop.index }}</td>
+                  <td>{{ cust[det.customer_id].cname }}</td>
+                  <td>{{ cust[det.customer_id].loc }}</td>
+                  <td>{{ cust[det.customer_id].pin }}</td>
+                  <td>{{ det.dateofrequest }}</td>
+                  <td>{{ det.rating }}</td>                 
+                 
+              </tr>
+            
+            {% endif %}
+        {% endfor %}
+
+
+        {% endif %}
+
+
+    </tbody>
+
+</table>
+
+<a href="{{url_for('phome',uid = uid)}}"><button>Home</button></a>
+<br>
+<a href="{{url_for('psearch',uid = uid)}}"><button>search</button></a>
+
+{% endblock %}

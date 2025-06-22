@@ -1,0 +1,24 @@
+{% extends './layout/simple.html' %}
+{% block body %}
+{% include './Professional/navbarp.html' %}
+
+<br>
+<h3>Please ensure if you select date, the date should be in the format of dd/mm/yyyy example 03/04/2024</h3>
+<br>
+<form action = '{{url_for("presult",uid = uid)}}' method = 'post' >
+    <select class="form-select" name = 'select1' aria-label="Default select example" aria-placeholder="please select">
+        
+        <option value="Date">Date</option>
+        <option value="Location"> Location</option>
+        <option value="Pincode">Pincode</option>
+        
+      </select>
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">search</label>
+        <input type="text" name = 'search1' class="form-control" id="exampleFormControlInput1">
+      </div>
+      <button type="submit"> Serach </button>
+
+</form>
+
+{% endblock %}

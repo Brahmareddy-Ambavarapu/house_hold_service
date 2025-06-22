@@ -1,0 +1,20 @@
+{% extends './layout/simple.html' %}
+{% block body %}
+<form action = '{{ url_for("pmodify",uid = uid,pid = pos.id )}}' method = 'post'>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Password</label>
+        <input type="Password" name = 'bp' id="exampleFormControlInput1" value = '{{pos.password}}'>
+      </div>
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">phone number</label>
+        <input type="number" name = "tr" id="exampleFormControlInput1" value = "{{pos.phone}}">
+      </div>
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Experience</label>
+        <input type="number" name = 'exp' id="exampleFormControlInput1" value = '{{pos.Experience}}'>
+      </div>
+      <button type="submit" class = "btn btn-primary">Edit</button>
+            
+</form> 
+
+{% endblock %}
